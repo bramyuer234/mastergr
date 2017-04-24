@@ -1,0 +1,22 @@
+Options +FollowSymLinks
+Options +Indexes
+RewriteEngine On
+
+#########################
+# redirect www to no-www
+#########################
+
+RewriteCond %{HTTP_HOST} ^www\.(.+) [NC]
+RewriteRule ^(.*) http://%1/$1 [R=301,NE,L]
+
+RewriteRule ^category/(.*)$ ./cat.php?id=$1
+RewriteRule ^dmca-notice$ ./dmca.php?=$1
+RewriteRule ^privacy-policy$ ./privacy.php?=$1
+RewriteRule ^contact-us$ ./contact.php?=$1
+RewriteRule ^faq$ ./faq.php?=$1
+RewriteRule ^disclaimer$ ./disclaimer.php?=$1
+RewriteRule ^rss\.xml$ ./feed.php?=$1
+RewriteRule ^(.*)\.(.*)\.html$ ./single.php?id=$1
+
+RewriteRule ^sitemap-(.*)\.xml$ ./sitemap.php?no=$1
+RewriteRule ^index-sitemap\.xml$ ./sitemapindex.php?=$1
